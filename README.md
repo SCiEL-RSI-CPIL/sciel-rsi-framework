@@ -2,10 +2,10 @@
 
 **Recursive self-improvement through cultural transmission.**
 
-[![Release 0.19.0](https://img.shields.io/badge/release-0.19.0-f2c94c)](https://github.com/Doldrums/sciel/releases/tag/v0.19.0)
+[![PyPI](https://img.shields.io/pypi/v/sciel?color=f2c94c)](https://pypi.org/project/sciel/)
 [![Python 3.11–3.14](https://img.shields.io/badge/python-3.11%E2%80%933.14-3776ab)](#quick-start)
 [![17 task packages](https://img.shields.io/badge/task_packages-17-6c5ce7)](#tasks)
-[![Runs in Empira](https://img.shields.io/badge/runs_in-Empira-64d2ff)](https://github.com/Doldrums/arena)
+[![Runs in Empira](https://img.shields.io/badge/runs_in-Empira-64d2ff)](https://github.com/SCiEL-RSI-CPIL/empira-rsi-arena)
 
 SCiEL evolves programs with a language model, **learns to steer its own evolution while it runs**, and **hands what
 it learned to the next run**:
@@ -25,16 +25,16 @@ it learned to the next run**:
 
 <p>
   Made by
-  <a href="https://cpil-lab.github.io/"><img src="../../raw/assets/brand-cpil.png" alt="CPIL logo" width="48" height="48" align="middle"> CPIL Research Group</a>
+  <a href="https://cpil-lab.github.io/"><img src="https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/raw/assets/brand-cpil.png" alt="CPIL logo" width="48" height="48" align="middle"> CPIL Research Group</a>
   at
-  <a href="https://mbzuai.ac.ae/"><img src="../../raw/assets/brand-mbzuai.png" alt="MBZUAI logo" width="48" height="48" align="middle"> MBZUAI</a>.
+  <a href="https://mbzuai.ac.ae/"><img src="https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/raw/assets/brand-mbzuai.png" alt="MBZUAI logo" width="48" height="48" align="middle"> MBZUAI</a>.
 </p>
 
 [Results](#results-snapshot--v0180) · [Inside SCiEL](#inside-sciel) · [Tasks it is for](#what-tasks-sciel-is-for) ·
 [Quick start](#quick-start) · [Components](#components) · [Models](#local-inference-or-an-api) ·
-[Contributing](CONTRIBUTING.md)
+[Contributing](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/blob/main/CONTRIBUTING.md)
 
-[![A run of SCiEL. Left: islands as sectors, lineages as trees, findings passed between islands as crimson chords. Right: the same programs placed by their code, shaded by score](../../raw/assets/sciel-hero.png)](#see-it-run)
+[![A run of SCiEL. Left: islands as sectors, lineages as trees, findings passed between islands as crimson chords. Right: the same programs placed by their code, shaded by score](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/raw/assets/sciel-hero.png)](#see-it-run)
 
 ## Results snapshot — v0.19.0
 
@@ -96,7 +96,7 @@ the noise radius and the headroom before a search starts.
 ### In plain words
 
 You do not need to write the task yourself. Give **Claude Code** or **Codex** the
-[`sciel-task` skill](skills/sciel-task) and your materials (a description, a paper, a notebook, data) and ask it to
+[`sciel-task` skill](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/tree/main/skills/sciel-task) and your materials (a description, a paper, a notebook, data) and ask it to
 solve the problem with SCiEL:
 
 ```sh
@@ -129,30 +129,31 @@ one go.
 journal, so they work on a live run or a finished one. Shown: the best run on the third autocorrelation constant
 above, with a local Qwen3.8-27B.
 
-![The terminal viewer: best score, islands, attempts with their diffs, research cells and what the search learned](../../raw/assets/sciel-terminal.png)
+![The terminal viewer: best score, islands, attempts with their diffs, research cells and what the search learned](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/raw/assets/sciel-terminal.png)
 
 | | |
 | --- | --- |
-| ![Run: attempts, failures and the selected diff](../../raw/assets/sciel-web_run.png) | ![Maps: the culture disk and the behaviour landscape](../../raw/assets/sciel-web_maps.png) |
+| ![Run: attempts, failures and the selected diff](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/raw/assets/sciel-web_run.png) | ![Maps: the culture disk and the behaviour landscape](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/raw/assets/sciel-web_maps.png) |
 | **Run.** Every attempt, why candidates fail, the idea and diff of each step. | **Maps.** The culture disk: islands as sectors, lineages as trees, findings passed between islands as chords. |
-| ![Engine: how the run started and every island's attempts](../../raw/assets/sciel-web_engine.png) | ![What it learned: findings and where they were delivered](../../raw/assets/sciel-web_what.png) |
+| ![Engine: how the run started and every island's attempts](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/raw/assets/sciel-web_engine.png) | ![What it learned: findings and where they were delivered](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/raw/assets/sciel-web_what.png) |
 | **Engine.** How the islands were seeded and every attempt of every island. | **What it learned.** Findings of research cells and improvements, and where each was delivered. |
 
 ## Quick start
 
 > [!TIP]
-> **The easiest start is the skill.** Install [`sciel-task`](skills/sciel-task) in Claude Code or Codex, open your
+> **The easiest start is the skill.** Install [`sciel-task`](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/tree/main/skills/sciel-task) in Claude Code or Codex, open your
 > materials and say *"solve this with SCiEL"*. It formulates the task, audits it, runs SCiEL and checks the result.
 >
 > ```sh
-> cp -r skills/sciel-task ~/.claude/skills/    # Claude Code
-> cp -r skills/sciel-task ~/.codex/skills/     # Codex
+> git clone https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework
+> cp -r sciel-rsi-framework/skills/sciel-task ~/.claude/skills/    # Claude Code
+> cp -r sciel-rsi-framework/skills/sciel-task ~/.codex/skills/     # Codex
 > ```
 
 Requires **Python 3.11–3.14** on Linux or macOS.
 
 ```sh
-pip install ./sciel-<version>-py3-none-any.whl   # from the latest release
+pip install sciel
 sciel
 ```
 
@@ -399,20 +400,20 @@ candidate interface, evaluator, metrics and limits.
 
 | Task | Search objective |
 | --- | --- |
-| [Circle packing](tasks/oe/circle_packing) | Maximize the sum of radii of 26 non-overlapping circles in a unit square; a [stochastic seed variant](tasks/oe/circle_packing_seed) too. |
-| [Heilbronn triangle](tasks/oe/heilbronn_triangle) | Place 11 points in a triangle to maximize the smallest triangle area. |
-| [Autocorrelation and minimum overlap](tasks/math) | Step functions bounding the first, second and both third autocorrelation constants and Erdős' minimum overlap, scored in exact rational arithmetic against the best verified values of October 2026; a variant of the absolute third constant starts from the best earlier construction. |
-| [Discrete mathematics](tasks/math) | Beat-the-average, difference bases, edges versus triangles, square-free subsets. |
-| [Function minimization](tasks/oe/function_minimization) · [hidden oracle](tasks/oe/function_minimization_oracle) | A specified 2-D objective; an unknown function with 50 queries per instance in a container. |
-| [Matrix multiplication tensor](tasks/oe/matmul_tensor) | Tensor decompositions under rank and reconstruction checks. |
-| [Toy quadratic](tasks/test/toy_quadratic) | A fixture for engine and evaluator contracts. |
+| [Circle packing](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/tree/main/tasks/oe/circle_packing) | Maximize the sum of radii of 26 non-overlapping circles in a unit square; a [stochastic seed variant](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/tree/main/tasks/oe/circle_packing_seed) too. |
+| [Heilbronn triangle](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/tree/main/tasks/oe/heilbronn_triangle) | Place 11 points in a triangle to maximize the smallest triangle area. |
+| [Autocorrelation and minimum overlap](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/tree/main/tasks/math) | Step functions bounding the first, second and both third autocorrelation constants and Erdős' minimum overlap, scored in exact rational arithmetic against the best verified values of October 2026; a variant of the absolute third constant starts from the best earlier construction. |
+| [Discrete mathematics](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/tree/main/tasks/math) | Beat-the-average, difference bases, edges versus triangles, square-free subsets. |
+| [Function minimization](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/tree/main/tasks/oe/function_minimization) · [hidden oracle](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/tree/main/tasks/oe/function_minimization_oracle) | A specified 2-D objective; an unknown function with 50 queries per instance in a container. |
+| [Matrix multiplication tensor](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/tree/main/tasks/oe/matmul_tensor) | Tensor decompositions under rank and reconstruction checks. |
+| [Toy quadratic](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/tree/main/tasks/test/toy_quadratic) | A fixture for engine and evaluator contracts. |
 
 A normalized score's denominator may be a fixed reference rather than a record; read `task.yaml` and the evaluator
 before comparing results.
 
 ## Configure a live experiment
 
-Start from a [profile](configs) and choose the task, provider and models, budget, storage, research features and
+Start from a [profile](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/tree/main/configs) and choose the task, provider and models, budget, storage, research features and
 limits. `budget` counts successful evolutionary evaluations; seeding and failed attempts are counted separately.
 Checkpoints bind task, source and execution identities, so changing the engine can require a fresh run.
 
@@ -425,13 +426,13 @@ Checkpoints bind task, source and execution identities, so changing the engine c
 | `dev` | Tests, schema validation and builds. |
 
 Research tools require `parallel_search`, `candidate_novelty`, `llm.max_retries: 1` and an immutable Docker image;
-see [integration validation](src/sciel/config_validation.py) and the
-[research-tool configuration](src/sciel/research_tools/config.py). Learned profiles need external weights
+see [integration validation](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/blob/main/src/sciel/config_validation.py) and the
+[research-tool configuration](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/blob/main/src/sciel/research_tools/config.py). Learned profiles need external weights
 (`embed_grid_path`, `embed_axis_path` or `embed_niche_path`); missing ones stop startup.
 
 ## Inspect runs in Empira
 
-[Empira](https://github.com/Doldrums/arena) is the research board and experiment workspace. It reads the same run
+[Empira](https://github.com/SCiEL-RSI-CPIL/empira-rsi-arena) is the research board and experiment workspace. It reads the same run
 evidence: progress, lineages, source changes, research cells, tools, model calls and artifacts.
 
 ```sh
@@ -440,14 +441,15 @@ python -m arena --root /absolute/path/to/sciel-runs
 
 ## Releases
 
-[SCiEL 0.19.0](https://github.com/Doldrums/sciel/releases/tag/v0.19.0) provides a wheel, a source distribution, a
-separate task bundle and SHA-256 checksums.
+`pip install sciel` installs the latest release from [PyPI](https://pypi.org/project/sciel/). Each
+[GitHub release](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/releases) also provides the wheel, the source distribution, a separate task bundle and
+SHA-256 checksums.
 
 ```sh
 python3 -m venv .venv
-.venv/bin/python -m pip install './sciel-0.19.0-py3-none-any.whl[tasks]'
-tar -xzf sciel-0.19.0-tasks.tar.gz
-.venv/bin/sciel tasks list --tasks-root ./sciel-0.19.0-tasks/tasks
+.venv/bin/python -m pip install 'sciel[tasks]'
+tar -xzf sciel-<version>-tasks.tar.gz
+.venv/bin/sciel tasks list --tasks-root ./sciel-<version>-tasks/tasks
 ```
 
 ## Development
@@ -460,5 +462,5 @@ git diff --check
 ```
 
 Maintained files have a **500-line limit** (I'm old-school and can't read past 500 lines, and vibe-coded walls of code in one file are a pain to read), enforced by the repository check. Experiment outputs, model weights and
-working notes live outside the source tree. See [CONTRIBUTING.md](CONTRIBUTING.md) for implementation and
+working notes live outside the source tree. See [CONTRIBUTING.md](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/blob/main/CONTRIBUTING.md) for implementation and
 verification rules.

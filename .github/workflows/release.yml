@@ -4,11 +4,8 @@ on:
   push:
     tags: ['v*']
 
-permissions:
-  contents: write
-
 jobs:
-  release:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -19,18 +16,58 @@ jobs:
           python-version: '3.12'
       - name: Build package and task bundle
         run: |
-          python -m pip install build
+          python -m pip install build twine
           python -m build
+          python -m twine check --strict dist/*
           version="${GITHUB_REF_NAME#v}"
-          mkdir -p "bundle/sciel-${version}-tasks"
+          mkdir -p "bundle/sciel-${version}-tasks" tasks-dist
           cp -r tasks "bundle/sciel-${version}-tasks/tasks"
-          tar -czf "dist/sciel-${version}-tasks.tar.gz" -C bundle "sciel-${version}-tasks"
-          (cd dist && sha256sum * > SHA256SUMS)
+          tar -czf "tasks-dist/sciel-${version}-tasks.tar.gz" -C bundle "sciel-${version}-tasks"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: package
+          path: dist/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tasks
+          path: tasks-dist/
+
+  pypi:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/sciel/
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: package
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
+
+  release:
+    needs: pypi
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist/
+          merge-multiple: true
       - name: Publish release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          tag_sha=$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${GITHUB_REF_NAME}" -q .object.sha)
-          gh api "repos/${GITHUB_REPOSITORY}/git/tags/${tag_sha}" -q .message > notes.md
+          (cd dist && sha256sum * > SHA256SUMS)
+          ref=$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/${GITHUB_REF_NAME}")
+          if [ "$(jq -r .object.type <<< "$ref")" = tag ]; then
+            gh api "repos/${GITHUB_REPOSITORY}/git/tags/$(jq -r .object.sha <<< "$ref")" -q .message > notes.md
+            notes=(--notes-file notes.md)
+          else
+            notes=(--generate-notes)
+          fi
           gh release create "$GITHUB_REF_NAME" dist/* --repo "$GITHUB_REPOSITORY" \
-            --title "SCiEL ${GITHUB_REF_NAME#v}" --notes-file notes.md --verify-tag
+            --title "SCiEL ${GITHUB_REF_NAME#v}" "${notes[@]}" --verify-tag

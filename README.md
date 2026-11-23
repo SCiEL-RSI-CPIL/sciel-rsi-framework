@@ -3,6 +3,7 @@
 **Recursive self-improvement through cultural transmission.**
 
 [![PyPI](https://img.shields.io/pypi/v/sciel?color=f2c94c)](https://pypi.org/project/sciel/)
+[![MIT license](https://img.shields.io/badge/license-MIT-9cc3f2)](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/blob/main/LICENSE)
 [![Python 3.11–3.14](https://img.shields.io/badge/python-3.11%E2%80%933.14-3776ab)](#quick-start)
 [![17 task packages](https://img.shields.io/badge/task_packages-17-6c5ce7)](#tasks)
 [![Runs in Empira](https://img.shields.io/badge/runs_in-Empira-64d2ff)](https://github.com/SCiEL-RSI-CPIL/empira-rsi-arena)
@@ -464,3 +465,7 @@ git diff --check
 Maintained files have a **500-line limit** (I'm old-school and can't read past 500 lines, and vibe-coded walls of code in one file are a pain to read), enforced by the repository check. Experiment outputs, model weights and
 working notes live outside the source tree. See [CONTRIBUTING.md](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/blob/main/CONTRIBUTING.md) for implementation and
 verification rules.
+
+## License
+
+SCiEL is released under the [MIT license](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/blob/main/LICENSE).

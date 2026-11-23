@@ -7,6 +7,7 @@
 !/Makefile
 !/pyproject.toml
 !/MANIFEST.in
+!/LICENSE
 
 !/.github/
 !/.github/workflows/

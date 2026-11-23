@@ -9,6 +9,14 @@ description = "Recursive self-improvement through cultural transmission"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
+authors = [
+    { name = "Arina Kharlamova" },
+    { name = "Jikun Kang" },
+    { name = "Yusheng Zhao" },
+    { name = "Xue Liu" },
+    { name = "Bowei He" },
+]
+maintainers = [{ name = "MBZUAI CPIL Research Group" }]
 requires-python = ">=3.11,<3.15"
 classifiers = [
     "Programming Language :: Python :: 3.11",

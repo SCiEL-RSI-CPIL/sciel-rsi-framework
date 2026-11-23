@@ -468,4 +468,5 @@ verification rules.
 
 ## License
 
-SCiEL is released under the [MIT license](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/blob/main/LICENSE).
+SCiEL is released by Arina Kharlamova, Jikun Kang, Yusheng Zhao, Xue Liu, Bowei He and the MBZUAI CPIL Research
+Group under the [MIT license](https://github.com/SCiEL-RSI-CPIL/sciel-rsi-framework/blob/main/LICENSE).
